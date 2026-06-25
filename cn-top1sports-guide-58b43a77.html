@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>top1体育 · 知识型介绍页</title>
+    <style>
+        /* 重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f3f9fc;
+            color: #1d2c3a;
+            line-height: 1.7;
+            padding: 0 18px;
+        }
+
+        /* 主容器 */
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 2.4rem 0 3.2rem;
+        }
+
+        /* 开场短句 — 故事感 */
+        .opening {
+            font-size: 1.6rem;
+            font-weight: 350;
+            color: #1b4e5f;
+            letter-spacing: 0.02em;
+            margin-bottom: 0.4rem;
+            padding-left: 4px;
+            border-left: 5px solid #2f9b9f;
+            padding-left: 18px;
+        }
+
+        .opening small {
+            font-size: 0.9rem;
+            color: #3e7a7c;
+            font-weight: 300;
+        }
+
+        /* 承接段落 */
+        .bridge {
+            background: #eaf4f5;
+            padding: 1.8rem 2rem;
+            border-radius: 32px 8px 32px 8px;
+            margin: 1.8rem 0 2.8rem;
+            box-shadow: 0 12px 20px -12px rgba(30, 80, 90, 0.12);
+        }
+
+        .bridge p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #1b3f44;
+        }
+
+        .bridge strong {
+            color: #146b6b;
+        }
+
+        /* 网格卡片区 — 特点列表 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin: 2.8rem 0 3.2rem;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 28px 12px 28px 12px;
+            padding: 1.6rem 1.8rem 1.8rem;
+            box-shadow: 0 4px 14px rgba(38, 99, 100, 0.07);
+            border-top: 3px solid #33a6a9;
+            transition: all 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 18px rgba(38, 108, 110, 0.10);
+            border-top-color: #1a7e7e;
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            font-weight: 520;
+            color: #115b5e;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .feature-card h3::before {
+            content: "▹";
+            color: #2d9598;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        .feature-card p {
+            color: #2c4a4f;
+            font-size: 0.98rem;
+        }
+
+        /* 第三块：场景 / 为什么重要 */
+        .scene-block {
+            background: linear-gradient(145deg, #f0fafb 0%, #e1f0f2 100%);
+            border-radius: 30px 10px 30px 10px;
+            padding: 2.2rem 2rem;
+            margin: 2.6rem 0 2.4rem;
+        }
+
+        .scene-block h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #0f5c60;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .scene-block p {
+            max-width: 720px;
+            color: #1b4247;
+        }
+
+        .scene-block .insight {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 14px 18px;
+            border-radius: 40px 12px 40px 12px;
+            margin-top: 18px;
+            font-style: normal;
+            border-left: 4px solid #1b8f8f;
+        }
+
+        /* FAQ 摘要 — 提示感 */
+        .faq-mini {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 17px 30px;
+            margin: 2.2rem 0 2rem;
+            padding: 0.6rem 0;
+        }
+
+        .faq-item {
+            flex: 1 1 220px;
+            background: white;
+            border-radius: 20px 6px 20px 6px;
+            padding: 1.2rem 1.4rem;
+            box-shadow: 0 2px 10px rgba(30, 90, 90, 0.05);
+        }
+
+        .faq-item .q {
+            font-weight: 530;
+            color: #0d5356;
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .faq-item .a {
+            color: #306368;
+            font-size: 0.92rem;
+        }
+
+        /* 温和结尾 + 自然链接 */
+        .ending {
+            border-top: 1px solid #b7d5d8;
+            padding-top: 2.2rem;
+            margin-top: 1.2rem;
+            text-align: left;
+        }
+
+        .ending p {
+            max-width: 780px;
+            font-size: 1rem;
+            color: #1b4e53;
+            background: #e2f0f1;
+            display: inline-block;
+            padding: 0.8rem 2rem 0.8rem 2rem;
+            border-radius: 100px 16px 100px 16px;
+        }
+
+        .ending a {
+            color: #0d6468;
+            text-decoration: none;
+            font-weight: 520;
+            border-bottom: 2px dotted #3aa7ab;
+            padding-bottom: 2px;
+            transition: 0.15s;
+        }
+
+        .ending a:hover {
+            border-bottom: 2px solid #0b7a7a;
+            color: #054f52;
+        }
+
+        .footnote {
+            margin-top: 36px;
+            font-size: 0.85rem;
+            color: #618a8c;
+            border-top: 1px dashed #bad1d3;
+            padding-top: 22px;
+        }
+
+        /* 移动端友好 */
+        @media (max-width: 680px) {
+            .opening {
+                font-size: 1.35rem;
+                padding-left: 14px;
+            }
+
+            .bridge {
+                padding: 1.4rem 1.2rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .feature-card {
+                padding: 1.4rem 1.4rem;
+            }
+
+            .scene-block {
+                padding: 1.6rem 1.2rem;
+            }
+
+            .faq-mini {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .ending p {
+                padding: 0.8rem 1.2rem;
+                display: block;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                padding: 3rem 0 4rem;
+            }
+            .feature-grid {
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- 开场短句 -->
+    <div class="opening">
+        并非所有平台都叫 <span style="color:#105f63;">top1体育</span>。 <small>—— 故事从认知开始</small>
+    </div>
+
+    <!-- 承接段落 -->
+    <div class="bridge">
+        <p>
+            从竞技数据到运动文化，<strong>top1体育</strong> 始终围绕一个核心：帮助爱好者更清晰地理解体育世界的脉络。
+            它不只是一个信息聚合地，而是一套经过梳理的体育知识系统。
+            无论是赛程回溯、运动项目演变，还是技战术常识，这里提供的是一种可延续的观看方式。
+        </p>
+    </div>
+
+    <!-- 特点：网格卡片（知识型） -->
+    <div class="feature-grid">
+        <div class="feature-card">
+            <h3>结构化的项目档案</h3>
+            <p>足球、篮球、网球、田径等主流运动均配有背景说明、规则演变与里程碑事件，便于横向比较不同项目的发展轨迹。</p>
+        </div>
+        <div class="feature-card">
+            <h3>赛事时间线梳理</h3>
+            <p>重大赛事不再孤立呈现——通过时间线串联世界杯、欧冠、大满贯等，理解赛事之间的层级与历史影响。</p>
+        </div>
+        <div class="feature-card">
+            <h3>术语与冷知识</h3>
+            <p>收录一百余条体育术语、裁判手势、战术板图释，适合初学者与资深爱好者共同翻阅，减少认知门槛。</p>
+        </div>
+        <div class="feature-card">
+            <h3>更新克制·重质量</h3>
+            <p>避免信息过载，每一条内容均经过交叉查证。比起即时新闻，更侧重能沉淀下来的体育通识。</p>
+        </div>
+    </div>
+
+    <!-- 场景/为什么重要 -->
+    <div class="scene-block">
+        <h2>理解体育，而非仅仅观看</h2>
+        <p>
+            很多人在屏幕前为绝杀欢呼，却不知道越位规则的演变如何改变了进攻哲学；
+            也有人热爱马拉松，却不清楚波士顿赛道为何被称作“朝圣之路”。
+            <span style="color:#0c6161; font-weight: 420;"> top1体育 试图搭建一座桥梁：</span>让观赛体验与背景知识互相补充。
+        </p>
+        <div class="insight">
+            ⚡ 例如：了解田径跑道上的起跑器发展史，或许会让你对百米飞人大战有全新的视角。
+        </div>
+    </div>
+
+    <!-- FAQ 摘要（提示性） -->
+    <div class="faq-mini">
+        <div class="faq-item">
+            <span class="q">❓ 为什么叫“top1体育”？</span>
+            <span class="a">名称源于对体育内容深度的追求——并非宣称第一，而是希望成为爱好者心中“优先参考”的体育信息源。</span>
+        </div>
+        <div class="faq-item">
+            <span class="q">❓ 内容覆盖哪些领域？</span>
+            <span class="a">主要聚焦大众运动与经典赛事，辅以运动科学、体育史及训练常识，不追逐短期热点。</span>
+        </div>
+        <div class="faq-item">
+            <span class="q">❓ 适合怎样的人阅读？</span>
+            <span class="a">体育迷、运动队新人教练、体育专业学生，以及任何想更系统理解体育文化的人。</span>
+        </div>
+    </div>
+
+    <!-- 温和结尾 + 必要链接（严格满足要求） -->
+    <div class="ending">
+        <p>
+            如果你也想在日常观赛之外，获得更踏实的体育知识参照，
+            可以看看 <a href="https://cn-top1sports.com">top1体育</a> ——
+            它用相对安静的方式，梳理着体育世界里那些值得被记住的细节。
+        </p>
+        <div class="footnote">
+            — 故事叙述式页面 · 基于知识视角 · 蓝绿点缀 · 移动端友好
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
